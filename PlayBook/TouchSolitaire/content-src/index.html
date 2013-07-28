@@ -1,0 +1,41 @@
+<?
+@include($_SERVER['DOCUMENT_ROOT']."/config/log_visitors.inc");
+?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<title>Touch Solitaire</title>
+	<link rel="stylesheet" href="solitaire.css" media="screen"></LINK>
+	<script type="text/javascript">	
+	var cardBackgroundArray = new Array();
+	cardBackgroundArray.push('images/card_bg1.gif');	
+	cardBackgroundArray.push('images/card_bg2.gif');	
+	
+	
+	
+	</script>
+	<script type="text/javascript" src="solitaire.js"></script>
+	
+	<SCRIPT type="text/javascript">
+	window.onload = initSolitaire;	
+	</script>
+</head>
+<body>
+<div id="bg_aces">
+
+
+</div>
+<div id="bg_seven">
+
+</div>
+
+<div id="bg_deck">
+	<div id="bg_deck_inner"></div>
+	<div id="bg_deck_shown"></div>
+</div>
+</div>
+
+<div id="movingCardContainer"></div>
+<a href="#" onclick="resetGame();return false">Reset Fields</a>
+</body>
+</html>

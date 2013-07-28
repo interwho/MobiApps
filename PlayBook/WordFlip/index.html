@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>WordFlip | Flip Your Text!</title>
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=iso-8859-1" />
+<style type="text/css">
+
+
+
+body {
+background: #373737;
+color: #343434;
+text-align:center;
+}
+
+a {
+color: #75bad9;
+text-decoration:none;
+}
+
+a:hover {
+color: #191919;
+text-decoration:none;
+}
+
+#container {
+font:76% Verdana,Tahoma,Arial,sans-serif;
+width:900px;
+background: #373737;
+color: #ffffff;
+margin:5px auto;
+text-align:left;
+
+}
+
+
+
+h1 {
+font-size:30px;
+margin-left:50px;
+margin-top:10px;
+padding-top:20px;
+color: #ffffff;
+}
+
+h2 {
+font-size:14px;
+margin-left:50px;
+color: #ffffff;
+}
+
+
+
+
+
+#left {
+float:left;
+width:680px;
+margin:0;
+}
+
+#left p{
+margin-left:10px;
+margin-right:10px;
+margin-top:0px;
+margin-bottom:0px;
+padding: 0px;
+}
+
+#right {
+float:right;
+width:220px;
+margin:0 0px 0 0px;
+
+}
+
+#right p{
+border: #ffffff 1px solid;
+margin:0px;
+background: #8fc11d;
+margin-bottom:5px;
+padding:3px;
+color: #ffffff;
+}
+
+
+
+#footer {
+clear:both;
+font-size:10px;
+text-align:center;
+padding-top:10px;
+padding-bottom:5px;
+}
+
+
+#footer a {
+color: #27a4f1;
+text-decoration:none;
+}
+
+#footer a:hover {
+color: #ffffff;
+text-decoration:none;
+}
+
+
+#clear {
+clear: both;
+}
+
+textarea {
+border: 2px solid #27a4f1;
+padding: 3px;
+width: 601px;
+height: 161px;
+font:14px Verdana,Tahoma,Arial,sans-serif;
+}
+
+.up {
+text-align: right;
+
+}
+
+code {
+color: #8fc11d;
+font-weight: strong;
+font:12px Verdana,Tahoma,Arial,sans-serif;
+}
+
+form {
+text-align:center;
+}
+
+
+</style>
+<script>
+function flip() {
+ var result = flipString(document.f.original.value.toLowerCase());
+ document.f.flipped.value = result;
+}
+
+function flipString(aString) {
+ var last = aString.length - 1;
+ //Thanks to Brook Monroe for the suggestion to use Array.join
+ var result = new Array(aString.length)
+ for (var i = last; i >= 0; --i) {
+  var c = aString.charAt(i)
+  var r = flipTable[c]
+  result[last - i] = r ? r : c
+ }
+ return result.join('')
+}
+
+var flipTable = {
+a : '\u0250',
+b : 'q',
+c : '\u0254', //open o -- from pen
+d : 'p',
+e : '\u01DD',
+f : '\u025F', //from pen
+g : '\u0183',
+h : '\u0265',
+i : '\u0131', //from pen
+j : '\u027E',
+k : '\u029E',
+//l : '\u0283',
+m : '\u026F',
+n : 'u',
+r : '\u0279',
+t : '\u0287',
+v : '\u028C',
+w : '\u028D',
+y : '\u028E',
+'.' : '\u02D9',
+'[' : ']',
+'(' : ')',
+'{' : '}',
+'?' : '\u00BF', //from pen
+'!' : '\u00A1',
+"\'" : ',',
+'<' : '>',
+'_' : '\u203E',
+'\u203F' : '\u2040',
+'\u2045' : '\u2046',
+'\u2234' : '\u2235',
+'\r' : '\n' //thank you, Yeeliberto
+}
+
+for (i in flipTable) {
+  flipTable[flipTable[i]] = i
+}
+</script></head><body>
+<p align="center">
+<img src="images/logo.jpg">
+</p>
+<form name="f">
+<textarea rows="5" cols="50" name="original" onkeyup="flip()"></textarea>
+<br>
+<br>
+<image value="Flip" onclick="flip()" src="images/flip.jpg" type="button">
+<br>
+<br>
+<textarea rows="5" cols="50" name="flipped"></textarea>
+</form>
+</body>
+</html>

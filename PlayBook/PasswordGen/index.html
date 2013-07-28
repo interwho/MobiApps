@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>PasswordGen</title>
+<SCRIPT LANGUAGE="JavaScript">
+function getRandomNum(lbound, ubound) {
+return (Math.floor(Math.random() * (ubound - lbound)) + lbound);
+}
+function getRandomChar(number, lower, upper, other, extra) {
+var numberChars = "0123456789";
+var lowerChars = "abcdefghijklmnopqrstuvwxyz";
+var upperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var otherChars = "`~!@#$%^&*()-_=+[{]}\\|;:'\",<.>/? ";
+var charSet = extra;
+if (number == true)
+charSet += numberChars;
+if (lower == true)
+charSet += lowerChars;
+if (upper == true)
+charSet += upperChars;
+if (other == true)
+charSet += otherChars;
+return charSet.charAt(getRandomNum(0, charSet.length));
+}
+function getPassword(length, extraChars, firstNumber, firstLower, firstUpper, firstOther,
+latterNumber, latterLower, latterUpper, latterOther) {
+var rc = "";
+if (length > 0)
+rc = rc + getRandomChar(firstNumber, firstLower, firstUpper, firstOther, extraChars);
+for (var idx = 1; idx < length; ++idx) {
+rc = rc + getRandomChar(latterNumber, latterLower, latterUpper, latterOther, extraChars);
+}
+return rc;
+}
+</script>
+<style>
+.header {font-size: 36px;font-weight: bold;font-family: Georgia, "Times New Roman", Times, serif;colour: #0066CC;}
+.inputkey {font-family: Geneva, Arial, Helvetica, sans-serif;font-weight: bold;font-size: 11pt;}
+.passwordkey {font-family:Verdana, Arial, Helvetica, sans-serif;font-weight: bold;font-size: 20pt; colour:#FF0000;}
+.style1 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 9pt;
+	color: #333333;
+}
+.style3 {font-size: 20px; font-weight: bold; font-family: Georgia, "Times New Roman", Times, serif; colour: #FF0000; }
+</style>
+</head>
+<body>
+<center>
+<div><br><br>
+  <p><span class="style3">PasswordGen For BlackBerry PlayBook</span> <br /><br /><br />
+      <br />
+    </p>
+</div>
+</center>
+<div>
+<table width="58%" border="0" align="center" cellpadding="0" cellspacing="0">
+<tr>
+<td><span class="input key">
+<form name="myform">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="31%">Starting Character:</td>
+<td>
+<input type=checkbox name=firstNumber checked> Number
+<input type=checkbox name=firstLower checked> Lowercase
+<input type=checkbox name=firstUpper checked> Uppercase
+<input type=checkbox name=firstOther > Symbols
+</td>
+</tr>
+<tr>
+<td width="31%">&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td width="31%">Subsequent Characters:</td>
+<td>
+<input type=checkbox name=latterNumber checked> Number
+<input type=checkbox name=latterLower checked> Lowercase
+<input type=checkbox name=latterUpper checked> Uppercase
+<input type=checkbox name=latterOther > Symbols
+</td>
+</tr>
+<tr>
+<td width="31%">&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td width="31%">Password Length:</td>
+<td><select name="passwordLength" style="width:200px;">
+<option disabled="disabled">---- Not Recommended ----</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+<option disabled="disabled">---- Recommended Size ----</option>
+<option value="11" selected="selected">11</option>
+<option value="12">12</option>
+<option value="13">13</option>
+<option value="14">14</option>
+<option value="15">15</option>
+<option value="16">16</option>
+<option value="17">17</option>
+<option value="18">18</option>
+<option value="18">18</option>
+<option value="19">19</option>
+<option value="20">20</option>
+<option value="21">21</option>
+<option value="22">22</option>
+<option value="23">23</option>
+<option value="24">24</option>
+<option value="25">25</option>
+<option value="26">26</option>
+<option value="27">27</option>
+<option value="28">28</option>
+<option value="29">29</option>
+<option value="30">30</option>
+<option value="31">31</option>
+<option value="32">32</option>
+<option value="33">33</option>
+<option value="34">34</option>
+<option value="35">35</option>
+<option value="36">36</option>
+<option value="37">37</option>
+<option value="38">38</option>
+<option value="39">39</option>
+<option value="40">40</option>
+</select>
+</td>
+</tr>
+<tr>
+<td width="31%">&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>Generated Password: </td>
+<td><input type=text name=password size=31 class="password key" align="absmiddle"></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<br /><br />
+<center>
+<input type=hidden name=extraChars size=20>
+<input type=button value="Generate!" onClick="document.myform.password.value =
+getPassword(document.myform.passwordLength.value, document.myform.extraChars.value,
+document.myform.firstNumber.checked, document.myform.firstLower.checked,
+document.myform.firstUpper.checked, document.myform.firstOther.checked,
+document.myform.latterNumber.checked, document.myform.latterLower.checked,
+document.myform.latterUpper.checked, document.myform.latterOther.checked);">
+</form>
+</div>
+<br /><br />
+<div align="center" class="style1"> Copyright &copy; 2011 - MobiApps - All Rights Reserved. </div>
+</body>
+</html>
