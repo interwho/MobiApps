@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+    <title>LED Scroller</title>
+	<style type="text/css">
+		body {
+			margin:0;
+			background-color:#000;
+			font-family: sans-serif;
+			color:#fff;
+			text-align: center;
+		}
+		
+		#led {
+			background-color:#000;
+		}
+		
+		#controls input {
+			font-size:1.4em;
+		}
+		#controls input.url {
+			width: 700px;
+			font-size:1.1em;
+		}
+		
+		#ledColour {
+			font-weight:bold;
+		}
+	</style>
+  </head>
+  <body><br><br><br><br><br>
+    <canvas id="led" width="990" height="200"></canvas>
+	
+	<div id="controls">
+		<p><input type="text" size="45" maxlength="100" id="msgText" value="Type Your Message Here!"> <input type="button" value="Set Text" id="setText"> | 
+		<!--
+		<p><input type="button" value="Stop" id="stopScroll"> <input type="button" value="Start" id="startScroll"></p>
+		-->
+		<input type="button" value="Slower" id="slowScroll"> <input type="button" value="Faster" id="fastScroll"> | 
+		<input type="button" value="Disco!" id="disco"> | 
+		<select id="ledColour">
+			<option value="#F22,#311" style="color:#F22">Red</option>
+			<option value="#2F2,#131" style="color:#2F2">Green</option>
+			<option value="#22F,#113" style="color:#22F">Blue</option>
+			<option value="#FF2,#331" style="color:#FF2">Yellow</option>
+			<option value="#F2F,#313" style="color:#F2F">Purple</option>
+		</select></p>
+	</div>
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<script type="text/javascript" src="font.js"></script>
+	<script type="text/javascript" src="led.js"></script>
+	<script type="text/javascript">
+		//<![CDATA[
+		
+		$(document).ready(function() {
+			$("#setText").click(function() { led.setText($("#msgText").val())});
+			$("#stopScroll").click(led.stop);
+			$("#startScroll").click(led.start);
+			$("#disco").click(function() { led.stateSwitches.disco = !led.stateSwitches.disco });
+			$("#slowScroll").click(led.slowScroll);
+			$("#fastScroll").click(led.fastScroll);
+			$("#ledColour").bind("change", function() {
+				var selection = this.options[this.selectedIndex].value.split(",");
+				led.colourOn = selection[0];
+				led.colourOff = selection[1];
+			});
+			$("#msgText").bind("keyup",function() {
+				$("#dynUrl").val(location.protocol + "//" + location.host + location.pathname + "?text=" + encodeURIComponent(this.value));
+				led.setText(this.value);
+			});
+			$("#dynUrl").click(function(){ this.select(); })
+
+			var hasSetText = false;
+			if (location.search.length > 5) {
+				$(location.search.substr(1).split("&")).each(function(idx,el) {
+					var param = this.split("=");
+					if (param.length >= 2 && param[0] == "text") {
+						led.setText(decodeURIComponent(param[1]));
+						$("#msgText").val(decodeURIComponent(param[1]));
+						$("#dynUrl").val(location.protocol + "//" + location.host + location.pathname + "?text=" + param[1]);
+						hasSetText = true;
+					}
+				});
+			}
+			if (!hasSetText) {
+				led.setText($("#msgText").val());
+				$("#dynUrl").val(location.protocol + "//" + location.host + location.pathname + "?text=" + encodeURIComponent($("#msgText").val()));
+			}
+		});
+		
+		//]]>
+	</script>
+</body>
+</html>

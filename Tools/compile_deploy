@@ -1,0 +1,36 @@
+#!/bin/bash
+dir1="xo" #directory name
+dir="/Users/Justin/Desktop/xo" #directory name
+path="/Users/Justin/bbwp/" #path to SDK
+
+
+
+
+
+password="playbook" #password set on emulator
+ip="192.168.19.214" #IP of emulator
+#do not edit from this point
+
+
+
+
+
+cd /
+cd $dir
+find . -name '*.DS_Store' -type f -delete
+zip -r ../$dir1.zip *
+
+
+
+
+
+#cd ..
+#sudo "$path"bbwp $dir.zip
+#sudo "$path"blackberry-tablet-sdk/bin/blackberry-deploy -installApp -password $password -device $ip -package bin/$dir1.bar
+
+
+
+
+
+
+cd /; ./Users/Justin/bbwp/bbwp "/Users/Justin/Desktop/$dir1.zip" -gcsk PASSWORD -gp12 PASSWORD -buildId 1 -o "/Users/Justin/Desktop/"

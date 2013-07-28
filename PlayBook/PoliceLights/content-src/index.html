@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>ColorStrobe</title>
+        <SCRIPT LANGUAGE="JavaScript">
+			function blinkit(){
+				intrvl=0;
+				for(nTimes=0;nTimes<100000;nTimes++){
+					intrvl += 100;
+					setTimeout("document.bgColor='#000000';",intrvl);
+					intrvl += 100;
+					setTimeout("document.bgColor='#f00000';",intrvl);
+					intrvl += 100;
+					setTimeout("document.bgColor='#000000';",intrvl);
+					intrvl += 100;
+					setTimeout("document.bgColor='#0029f0';",intrvl);
+					intrvl += 100;
+					setTimeout("document.bgColor='#000000';",intrvl);
+					intrvl += 100;
+					setTimeout("document.bgColor='#f00000';",intrvl);
+			   }
+			}
+		</SCRIPT>
+    </head>
+    <body onload="blinkit();">
+    </body>
+</html>

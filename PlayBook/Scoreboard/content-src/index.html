@@ -1,0 +1,277 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><HTML> 
+<HEAD> 
+<TITLE>Scoreboard</TITLE> 
+ 
+<STYLE TYPE="text/css"> 
+ 
+BODY {
+	background-color:#333333;
+	margin: 10px auto;
+	font-family: Helvetica, sans-serif;
+	width:980px;
+	}
+ 
+#content {
+	position:relative; 
+	background-color:black;
+	width:980px;
+	height:600px;
+	margin: 0px;
+	font-family: Helvetica, sans-serif;
+	font-size: 10px;
+	box-shadow: 0px 0px 5px #000000;
+	-moz-box-shadow: 0px 0px 5px #000000;
+	-webkit-box-shadow: 0px 0px 5px #000000;
+	}
+	
+.radius-name {
+	-webkit-border-radius: 60px 60px 0 0;
+	-moz-border-radius: 60px 60px 0 0;
+	border-radius: 60px 60px 0 0;
+	text-align:center;
+	font-family:Helvetica,sans-serif;
+	font-weight:bold;
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	cursor:pointer;
+	}
+ 
+.radius-score {
+	-webkit-border-radius: 0 0 60px 60px;
+	-moz-border-radius: 0 0 60px 60px;
+	border-radius: 0 0 60px 60px;
+	text-align:center;
+	font-family:Helvetica,sans-serif;
+	font-weight:bold;
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	cursor:pointer;
+	overflow:hidden;
+	 }
+ 
+.radius-buttons {
+	-webkit-border-radius: 60px;
+	-moz-border-radius: 60px;
+	border-radius: 60px;
+	text-align:center;
+	font-family:Helvetica,sans-serif;
+	font-weight:bold;
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	cursor:pointer;
+	}
+ 
+</STYLE> 
+ 
+<SCRIPT type="text/javascript"> 
+ 
+var team1score = 0;
+var team2score = 0;
+var team1name = "Home";
+var team2name = "Away";
+var team1bgColor = "Blue";
+var team2bgColor = "Red";
+var team1txtColor = "White";
+var team2txtColor = "White";
+ 
+function addScore(whichTeam,howMuch)
+	{
+	if(whichTeam == 1)
+		{
+		team1score=team1score+(howMuch);
+		if(team1score>999) {team1score=999}
+		if(team1score<0) {team1score=0}
+		fontFix();
+		document.getElementById('score1').innerHTML = team1score
+		}
+	if(whichTeam == 2)
+		{
+		team2score=team2score+(howMuch);
+		if(team2score>999) {team2score=999}
+		if(team2score<0) {team2score=0}
+		fontFix();
+		document.getElementById('score2').innerHTML = team2score
+		}
+	return;
+	}
+ 
+function renameTeam(whichTeam)
+	{
+	if(whichTeam == 1)
+		{
+		team1name = prompt ("New Name For '"+team1name+"':",team1name);
+		document.getElementById('name1').innerHTML = team1name;
+		}
+	if(whichTeam == 2)
+		{
+		team2name = prompt ("New Name For '"+team2name+"':",team2name);
+		document.getElementById('name2').innerHTML = team2name;
+		}
+	return;
+	}
+	
+function zeroScore()
+	{
+	var okZero = confirm('Do you want to reset the scores to zero?'); 
+	if(okZero == true){
+		team1score = 0;
+		team2score = 0;
+		document.getElementById('score1').innerHTML = team1score;
+		document.getElementById('score2').innerHTML = team2score;
+		fontFix();
+		}
+	return;
+	}
+	
+function fontFix()
+{
+	if(team1score < 100) 
+	{
+		document.getElementById('score1').style.fontSize='400px';
+	} else {
+		document.getElementById('score1').style.fontSize='250px';
+	}
+ 
+	if(team2score < 100) {
+		document.getElementById('score2').style.fontSize='400px';
+	} else {
+		document.getElementById('score2').style.fontSize='250px';
+	}
+	return;
+}
+ 
+function changeScore()
+{
+	var okChange = confirm('Do you want to manually change the score?'); 
+	if(okChange == true)
+	{
+		var okScoreTeam1 = prompt("Enter new score for '"+team1name+"':", team1score);
+		
+		if(okScoreTeam1.charAt(0) == "0")
+		{
+		okScoreTeam1 = okScoreTeam1.substr(1);
+		}
+		
+		okScoreTeam1 = parseInt(okScoreTeam1);
+		if (isNaN(okScoreTeam1) || okScoreTeam1<0 || okScoreTeam1>999) 
+		{
+		    alert("Sorry, that was not a valid entry.");
+		    return; 
+		} else {
+			team1score = okScoreTeam1;
+			document.getElementById('score1').innerHTML = team1score;
+			fontFix();
+		}	
+			 
+		var okScoreTeam2 = prompt("Enter new score for '"+team2name+"':", team2score);
+		
+		if(okScoreTeam2.charAt(0) == "0")
+		{
+		okScoreTeam2 = okScoreTeam2.substr(1);
+		}
+		
+		okScoreTeam2 = parseInt(okScoreTeam2);
+		if (isNaN(okScoreTeam2) || okScoreTeam2<0 || okScoreTeam2>999) 
+		{
+		    alert("Sorry, that was not a valid entry.");
+		    return; 
+		} else {
+			team2score = okScoreTeam2;
+			document.getElementById('score2').innerHTML = team2score;
+			fontFix();
+		}	
+	}
+}
+ 
+function bgChange(whichTeam)
+{
+	if(whichTeam == 1)
+	{
+		var newTeam1bgColor = prompt("Enter a new valid background color for '"+team1name+"':", team1bgColor);
+		
+		if(newTeam1bgColor.length > 20) 
+		{
+		    alert("Sorry, that was too long.");
+		    return; 
+		}
+		team1bgColor=newTeam1bgColor;
+		document.getElementById('name1').style.backgroundColor=team1bgColor;
+		document.getElementById('score1').style.backgroundColor=team1bgColor;
+		document.getElementById('minus1').style.backgroundColor=team1bgColor;
+		document.getElementById('colors1').style.backgroundColor=team1bgColor;
+ 
+		var newTeam1txtColor = prompt("Enter a new valid text color for '"+team1name+"':", team1txtColor);
+		
+		if(newTeam1txtColor.length > 20) 
+		{
+		    alert("Sorry, that was too long.");
+		    return; 
+		}
+		team1txtColor=newTeam1txtColor;
+		document.getElementById('name1').style.color=team1txtColor;
+		document.getElementById('score1').style.color=team1txtColor;
+		document.getElementById('minus1').style.color=team1txtColor;
+		document.getElementById('colors1').style.color=team1txtColor;
+		return; 
+	} else	{
+		var newTeam2bgColor = prompt("Enter a new valid background color for '"+team2name+"':", team2bgColor);
+		
+		if(newTeam2bgColor.length > 20) 
+		{
+		    alert("Sorry, that was too long.");
+		    return; 
+		}
+		team2bgColor=newTeam2bgColor;
+		document.getElementById('name2').style.backgroundColor=team2bgColor;
+		document.getElementById('score2').style.backgroundColor=team2bgColor;
+		document.getElementById('minus2').style.backgroundColor=team2bgColor;
+		document.getElementById('colors2').style.backgroundColor=team2bgColor;
+ 
+		var newTeam2txtColor = prompt("Enter a new valid text color for '"+team2name+"':", team2txtColor);
+		
+		if(newTeam2txtColor.length > 20) 
+		{
+		    alert("Sorry, that was too long.");
+		    return; 
+		}
+		team2txtColor=newTeam2txtColor;
+		document.getElementById('name2').style.color=team2txtColor;
+		document.getElementById('score2').style.color=team2txtColor;
+		document.getElementById('minus2').style.color=team2txtColor;
+		document.getElementById('colors2').style.color=team2txtColor;
+		return; 
+	}
+}
+ 
+</SCRIPT> 
+ 
+<BODY> 
+ 
+<DIV id="content"> 
+ 
+<DIV onmouseup="renameTeam(1)" style="position:absolute;left:20px;top:20px;background-color:blue; width:460px; height:100px;color:#ffffff;font-size:72px;line-height:100px;" class="radius-name" id="name1" unselectable="on">Home</DIV> 
+ 
+<DIV onmouseup="addScore(1,1)" style="position:absolute;left:20px;top:140px;background-color:blue; width:460px; height:390px;color:#ffffff;font-size:400px;line-height:410px;" class="radius-score" id="score1" unselectable="on">0</DIV> 
+ 
+<DIV onmouseup="renameTeam(2)" style="position:absolute;right:20px;top:20px;background-color:red; width:460px; height:100px;color:#ffffff;font-size:72px;line-height:100px;" class="radius-name" id="name2" unselectable="on">Away</DIV> 
+ 
+<DIV onmouseup="addScore(2,1)" style="position:absolute;right:20px;top:140px;background-color:red; width:460px; height:390px;color:#ffffff;font-size:400px;line-height:410px;" class="radius-score" id="score2" unselectable="on">0</DIV> 
+ <!--
+<DIV onmouseup="addScore(1,-1)" style="position:absolute;left:225px;bottom:20px;background-color:blue; width:50px; height:30px;color:#ffffff;font-size:16px;line-height:30px;" class="radius-buttons" id="minus1" unselectable="on">-&nbsp;1</DIV> 
+ 
+<DIV onmouseup="addScore(2,-1)" style="position:absolute;right:225px;bottom:20px;background-color:red; width:50px; height:30px;color:#ffffff;font-size:16px;line-height:30px;" class="radius-buttons" id="minus2" unselectable="on">-&nbsp;1</DIV> 
+ 
+<DIV onmouseup="zeroScore()" style="position:absolute;left:438px;bottom:20px;background-color:#999999; width:50px; height:30px;color:#ffffff;font-size:16px;line-height:30px;-webkit-border-radius: 60px 0 0 60px;-moz-border-radius: 60px 0 0 60px;border-radius: 60px 0 0 60px;text-align:center;font-family:Helvetica,sans-serif;font-weight:bold;user-select: none;-webkit-user-select:none;-moz-user-select:none;cursor:pointer;" unselectable="on">0-0</DIV> 
+ 
+<DIV onmouseup="changeScore()" style="position:absolute;right:438px;bottom:20px;background-color:#999999; width:50px; height:30px;color:#ffffff;font-size:16px;line-height:30px;-webkit-border-radius: 0 60px 60px 0;-moz-border-radius: 0 60px 60px 0;border-radius: 0 60px 60px 0;text-align:center;font-family:Helvetica,sans-serif;font-weight:bold;user-select: none;-webkit-user-select:none;-moz-user-select:none;cursor:pointer;" unselectable="on">x-y</DIV> 
+ 
+<DIV onmouseup="bgChange(1)" style="position:absolute;left:15px;bottom:20px;background-color:blue; width:70px; height:30px;color:#ffffff;font-size:16px;line-height:30px;" class="radius-buttons" id="colors1" unselectable="on">colors</DIV> 
+ 
+<DIV onmouseup="bgChange(2)" style="position:absolute;right:15px;bottom:20px;background-color:red; width:70px; height:30px;color:#ffffff;font-size:16px;line-height:30px;" class="radius-buttons" id="colors2" unselectable="on">colors</DIV> 
+ -->
+</DIV>
+</BODY>
+</HTML>

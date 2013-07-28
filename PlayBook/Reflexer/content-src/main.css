@@ -1,0 +1,113 @@
+@charset "UTF-8";
+
+body, div, p, blockquote, table, th, td, embed, object,
+fieldset, form, input, textarea, select, option, pre,
+dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	padding: 0;
+	vertical-align: baseline;
+}
+
+body {
+	background: #000;
+	color: #FEFEFE;
+	font-size: 13px;
+	*font-size: small;
+	*font: x-small;
+	font-family:
+		'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro',
+		メイリオ, meiryo, verdana, 'ＭＳ Ｐゴシック', sans-serif;
+	line-height: 1.6;
+	letter-spacing: 1px;
+}
+
+div.main {
+	width: 400px;
+	margin: 30px auto;
+	padding: 15px 25px 25px;
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	background: #222;
+	overflow: hidden;
+	zoom: 1;
+}
+
+div.main h1 {
+	margin: 0 0 10px;
+}
+
+#action {
+	position: relative;
+	float: left;
+	width: 250px;
+}
+
+#action p.guide span {
+	line-height: 2;
+}
+#action p.guide span {
+	padding: 1px 5px;
+	border-radius: 25px;
+	-webkit-border-radius: 25px;
+	-moz-border-radius: 25px;
+}
+
+#action p.guide span.wait {
+	background: #C00;
+}
+
+#action p.guide span.active {
+	background: #6C0;
+}
+
+#action p a {
+	display: block;
+	margin: 20px auto;
+	padding: 15px;
+	border-radius: 50px;
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+	background: #CCC;
+	text-align: center;
+	color: #333;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 116%;
+}
+
+#action p a.wait {
+	padding: 50px;
+	width: 0;
+	background: #C00;
+}
+
+#action p a.active {
+	padding: 50px;
+	width: 0;
+	background: #6C0;
+}
+
+#action p a.penalty {
+	background: #C00;
+	color: #FFF;
+}
+
+#timer {
+	float: right;
+	width: 118px;
+}
+
+#timer ol li {
+	margin: 0 0 5px 18px;
+	letter-spacing: -1px;
+}
+
+#timer input {
+	width: 100px;
+	padding: 1px 0 1px;
+	border: 0;
+	letter-spacing: 1px;
+	background: none;
+	color: #FFF;
+}

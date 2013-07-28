@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>StrobeLight</title>
+        <SCRIPT LANGUAGE="JavaScript">
+			function blinkit(){
+				intrvl=0;
+				for(nTimes=0;nTimes<100000;nTimes++){
+					intrvl += 75;
+					setTimeout("document.bgColor='#000000';",intrvl);
+					intrvl += 75;
+					setTimeout("document.bgColor='#FFFFFF';",intrvl);
+			   }
+			}
+		</SCRIPT>
+    </head>
+    <body onload="blinkit();">
+    </body>
+</html>

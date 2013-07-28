@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>PixelFix</title>
+        <SCRIPT LANGUAGE="JavaScript">
+			function blinkit(){
+				intrvl=0;
+				for(nTimes=0;nTimes<100000;nTimes++){
+					intrvl += 2500;
+					setTimeout("document.bgColor='#000000';",intrvl);
+					intrvl += 2500;
+					setTimeout("document.bgColor='#FFFFFF';",intrvl);
+					intrvl += 2500;
+					setTimeout("document.bgColor='#FF0000';",intrvl);
+					intrvl += 2500;
+					setTimeout("document.bgColor='#00FF00';",intrvl);
+					intrvl += 2500;
+					setTimeout("document.bgColor='#0000FF';",intrvl);
+					intrvl += 2500;
+					setTimeout("document.bgColor='#FFFF00';",intrvl);
+					intrvl += 2500;
+					setTimeout("document.bgColor='#FF00FF';",intrvl);
+					intrvl += 2500;
+					setTimeout("document.bgColor='#00FFFF';",intrvl);
+			   }
+			}
+		</SCRIPT>
+    </head>
+    <body onload="blinkit();">
+    </body>
+</html>

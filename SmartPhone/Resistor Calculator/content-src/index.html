@@ -1,0 +1,135 @@
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-2">
+<TITLE>Resistor Color Code Converter</TITLE>
+<!--
+blackband = new Image()
+blackband.src = "images/black.gif"
+brownband = new Image()
+brownband.src = "images/brown.gif"
+redband = new Image()
+redband.src = "images/red.gif"
+orangeband = new Image()
+orangeband.src = "images/orange.gif"
+yellowband = new Image()
+yellowband.src = "images/yellow.gif"
+greenband = new Image()
+greenband.src = "images/green.gif"
+blueband = new Image()
+blueband.src = "images/blue.gif"
+violetband = new Image()
+violetband.src = "images/violet.gif"
+grayband = new Image()
+grayband.src = "images/gray.gif"
+whiteband = new Image()
+whiteband.src = "images/white.gif"
+goldband = new Image()
+goldband.src = "images/gold.gif"
+silverband = new Image()
+silverband.src = "images/silver.gif"
+digit0 = new Image()
+digit0.src = "images/zero.gif"
+digit1 = new Image()
+digit1.src = "images/one.gif"
+digit2 = new Image()
+digit2.src = "images/two.gif"
+digit3 = new Image()
+digit3.src = "images/three.gif"
+digit4 = new Image()
+digit4.src = "images/four.gif"
+digit5 = new Image()
+digit5.src = "images/five.gif"
+digit6 = new Image()
+digit6.src = "images/six.gif"
+digit7 = new Image()
+digit7.src = "images/seven.gif"
+digit8 = new Image()
+digit8.src = "images/eight.gif"
+digit9 = new Image()
+digit9.src = "images/nine.gif"
+zero0 = new Image()
+zero0.src = "images/0zero.gif"
+zero1 = new Image()
+zero1.src = "images/1zero.gif"
+zero2 = new Image()
+zero2.src = "images/2zero.gif"
+zero3 = new Image()
+zero3.src = "images/3zero.gif"
+zero4 = new Image()
+zero4.src = "images/4zero.gif"
+zero5 = new Image()
+zero5.src = "images/5zero.gif"
+zero6 = new Image()
+zero6.src = "images/6zero.gif"
+zero7 = new Image()
+zero7.src = "images/7zero.gif"
+zero8 = new Image()
+zero8.src = "images/8zero.gif"
+zero9 = new Image()
+zero9.src = "images/9zero.gif"
+zero10 = new Image()
+zero10.src = "images/10zero.gif"
+//-->
+</SCRIPT>
+</HEAD>
+
+
+
+<BODY bgcolor="#ffffff">
+<CENTER><FONT size="4"><B>Push the radio buttons to build a resistor.</B></FONT><P>
+<IMG src="images/wire.gif" width="40" height="30"><IMG src="images/body.gif" width="10" height="30"><IMG name="band1" src="images/black.gif" width="10" height="30"><IMG src="images/body.gif" width="10" height="30"><IMG name="band2" src="images/black.gif" width="10" height="30"><IMG src="images/body.gif" width="10" height="30"><IMG name="band3" src="images/black.gif" width="10" height="30"><IMG src="images/body.gif" width="10" height="30"><IMG name="band4" src="images/gold.gif" width="10" height="30"><IMG src="images/body.gif" width="10" height="30"><IMG src="images/body.gif" width="10" height="30"><IMG src="images/body.gif" width="10" height="30"><IMG src="images/wire.gif" width="40" height="30"></P></CENTER><P>
+</P><CENTER><FONT size="5">Value = </FONT><IMG name="msd" src="images/zero.gif" width="12" height="20"><IMG name="lsd" src="images/zero.gif" width="12" height="20"><IMG name="mult" src="images/0zero.gif" width="111" height="20"><FONT size="5"> Ohms</FONT></CENTER><P>
+</P><FORM name="resistance">
+<CENTER><TABLE cellpadding="10"><TBODY><TR>
+<TD>
+<B>1st Digit:</B><BR>
+<INPUT name="band01" type="radio" onclick="band1.src=&#39;images/black.gif&#39;; msd.src=&#39;images/0zero.gif&#39;" checked="">0 <FONT size="2">(Black)</FONT><BR>
+<INPUT name="band01" type="radio" onclick="band1.src=&#39;images/brown.gif&#39;; msd.src=&#39;images/one.gif&#39;">1 <FONT size="2">(Brown)</FONT><BR>
+<INPUT name="band01" type="radio" onclick="band1.src=&#39;images/red.gif&#39;; msd.src=&#39;images/two.gif&#39;">2 <FONT size="2">(Red)</FONT><BR>
+<INPUT name="band01" type="radio" onclick="band1.src=&#39;images/orange.gif&#39;; msd.src=&#39;images/three.gif&#39;">3 <FONT size="2">(Orange)</FONT><BR>
+<INPUT name="band01" type="radio" onclick="band1.src=&#39;images/yellow.gif&#39;; msd.src=&#39;images/four.gif&#39;">4 <FONT size="2">(Yellow)</FONT><BR>
+<INPUT name="band01" type="radio" onclick="band1.src=&#39;images/green.gif&#39;; msd.src=&#39;images/five.gif&#39;">5 <FONT size="2">(Green)</FONT><BR>
+<INPUT name="band01" type="radio" onclick="band1.src=&#39;images/blue.gif&#39;; msd.src=&#39;images/six.gif&#39;">6 <FONT size="2">(Blue)</FONT><BR>
+<INPUT name="band01" type="radio" onclick="band1.src=&#39;images/violet.gif&#39;; msd.src=&#39;images/seven.gif&#39;">7 <FONT size="2">(Violet)</FONT><BR>
+<INPUT name="band01" type="radio" onclick="band1.src=&#39;images/gray.gif&#39;; msd.src=&#39;images/eight.gif&#39;">8 <FONT size="2">(Gray)</FONT><BR>
+<INPUT name="band01" type="radio" onclick="band1.src=&#39;images/white.gif&#39;; msd.src=&#39;images/nine.gif&#39;">9 <FONT size="2">(White)</FONT><BR>
+</TD>
+<TD>
+<B>2nd Digit:</B><BR>
+<CENTER><INPUT name="band02" type="radio" onclick="band2.src=&#39;images/black.gif&#39;; lsd.src=&#39;images/zero.gif&#39;" checked="">0<BR>
+<INPUT name="band02" type="radio" onclick="band2.src=&#39;images/brown.gif&#39;; lsd.src=&#39;images/one.gif&#39;">1<BR>
+<INPUT name="band02" type="radio" onclick="band2.src=&#39;images/red.gif&#39;; lsd.src=&#39;images/two.gif&#39;">2<BR>
+<INPUT name="band02" type="radio" onclick="band2.src=&#39;images/orange.gif&#39;; lsd.src=&#39;images/three.gif&#39;">3<BR>
+<INPUT name="band02" type="radio" onclick="band2.src=&#39;images/yellow.gif&#39;; lsd.src=&#39;images/four.gif&#39;">4<BR>
+<INPUT name="band02" type="radio" onclick="band2.src=&#39;images/green.gif&#39;; lsd.src=&#39;images/five.gif&#39;">5<BR>
+<INPUT name="band02" type="radio" onclick="band2.src=&#39;images/blue.gif&#39;; lsd.src=&#39;images/six.gif&#39;">6<BR>
+<INPUT name="band02" type="radio" onclick="band2.src=&#39;images/violet.gif&#39;; lsd.src=&#39;images/seven.gif&#39;">7<BR>
+<INPUT name="band02" type="radio" onclick="band2.src=&#39;images/gray.gif&#39;; lsd.src=&#39;images/eight.gif&#39;">8<BR>
+<INPUT name="band02" type="radio" onclick="band2.src=&#39;images/white.gif&#39;; lsd.src=&#39;images/nine.gif&#39;">9<BR>
+</CENTER></TD>
+<TD>
+<B>Multiplier:</B><BR>
+<INPUT name="band03" type="radio" onclick="band3.src=&#39;images/black.gif&#39;; mult.src=&#39;images/0zero.gif&#39;" checked="">x1<BR>
+<INPUT name="band03" type="radio" onclick="band3.src=&#39;images/brown.gif&#39;; mult.src=&#39;images/1zero.gif&#39;">x10<BR>
+<INPUT name="band03" type="radio" onclick="band3.src=&#39;images/red.gif&#39;; mult.src=&#39;images/2zero.gif&#39;">x100<BR>
+<INPUT name="band03" type="radio" onclick="band3.src=&#39;images/orange.gif&#39;; mult.src=&#39;images/3zero.gif&#39;">x1K<BR>
+<INPUT name="band03" type="radio" onclick="band3.src=&#39;images/yellow.gif&#39;; mult.src=&#39;images/4zero.gif&#39;">x10K<BR>
+<INPUT name="band03" type="radio" onclick="band3.src=&#39;images/green.gif&#39;; mult.src=&#39;images/5zero.gif&#39;">x100K<BR>
+<INPUT name="band03" type="radio" onclick="band3.src=&#39;images/blue.gif&#39;; mult.src=&#39;images/6zero.gif&#39;">x1M<BR>
+<INPUT name="band03" type="radio" onclick="band3.src=&#39;images/violet.gif&#39;; mult.src=&#39;images/7zero.gif&#39;">x10M<BR>
+<INPUT name="band03" type="radio" onclick="band3.src=&#39;images/gray.gif&#39;; mult.src=&#39;images/8zero.gif&#39;">x100M<BR>
+<INPUT name="band03" type="radio" onclick="band3.src=&#39;images/white.gif&#39;; mult.src=&#39;images/9zero.gif&#39;">x1000M<BR>
+</TD>
+<TD valign="TOP">
+<B>Tolerance:</B><BR>
+<INPUT name="band04" type="radio" onclick="band4.src=&#39;images/gold.gif&#39;" checked="">&nbsp;5% <FONT size="2">(Gold)</FONT><BR>
+<INPUT name="band04" type="radio" onclick="band4.src=&#39;images/silver.gif&#39;">10% <FONT size="2">(Silver)</FONT><BR>
+<INPUT name="band04" type="radio" onclick="band4.src=&#39;images/body.gif&#39;">20% <FONT size="2">(none)</FONT><BR>
+</TD>
+</TR></TBODY></TABLE></CENTER>
+
+</FORM>
+<BLOCKQUOTE>
+	<p align="center">Note: Not all resistor color combinations represent valid or 'standard' resistor values.  Invreon Mobile/MobiApps is not responsible for any damages resulting from use of this program.</p>
+</BODY>
+</HTML>

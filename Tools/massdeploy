@@ -1,0 +1,24 @@
+#!/bin/bash
+dir1="LEDScroller" #directory name
+dir="/Users/Justin/Desktop/LEDScroller" #directory name
+
+
+
+
+
+
+
+
+
+
+
+
+path="/Users/Justin/bbwp/" #path to SDK
+#do not edit from this point
+cd /
+cd $dir
+find . -name '*.DS_Store' -type f -delete
+zip -r ../$dir1.zip *
+cd ..
+sudo "$path"bbwp $dir.zip
+sudo "$path"blackberry-tablet-sdk/bin/blackberry-deploy -installApp -password playbook -device 192.168.19.214 -package bin/$dir1.bar

@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html manifest="etc/mf.php">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Triton</title>
+        <link rel="shortcut icon" href="images/favicon.ico">
+        <link href="css/style.css" rel="stylesheet" type="text/css">
+        <link href="css/typography.css" rel="stylesheet" type="text/css">
+        <link href="css/welcome.css" rel="stylesheet" type="text/css">
+        <link href="css/compact.css" rel="stylesheet" type="text/css">
+        <link href="css/print.css" rel="stylesheet" type="text/css" media="print" >
+        <script src="js/lib.js"></script>
+        <script src="js/jquery.js"></script>
+        <script src="js/json.js"></script>
+        <script src="js/showdown.js"></script>
+        <script src="js/simplemd.js"></script>
+        <script src="js/autogrow.js"></script>
+        <script src="js/timeago.js"></script>
+        <script src="js/hotkeys.js"></script>
+        <script src="js/Triton.js"></script>
+        <script src="js/Storage.js"></script>
+        <script src="js/Thread.js"></script>
+        <script src="js/Encoder.js"></script>
+        <script src="js/Parser.js"></script>
+        <script src="js/ThreadIndex.js"></script>
+        <script src="js/Sidebar.js"></script>
+        <script src="js/Settings.js"></script>
+        <script src="js/KUI.js"></script>
+        <script src="js/Editor.js"></script>
+        <script src="js/Posts.js"></script>
+        <script src="js/ThreadManager.js"></script>
+        <script src="js/ThreadSlider.js"></script>
+    </head>
+    <body>
+        <div id="wash">&nbsp;</div>
+        <nav>
+            <div id="advanced">
+                <div id="documents">
+                    <ul id="document-list">
+                    </ul>
+                </div>
+            </div>
+            <header>
+                <a id="logo"><img src="images/logo.png"></a>
+            </header>
+            <ul id="links">
+            </ul>
+            <div id="overview">
+            </div>
+        </nav>
+        <div id="posts"></div>
+        <div id="welcome">
+            <div class="started">
+                Click <em>New Document</em> to Get Started.
+            </div>
+        </div>
+        <script>
+            (function(){
+                var cache = window.applicationCache;
+                cache.addEventListener('updateready', function(){
+                    // When the user refreshes, tell them they've updated
+                    window.localStorage.setItem("updated", "yes");
+                    window.Triton.editor.reload();
+                }, false);
+
+                cache.addEventListener('chached', function(){
+                    // When the user refreshes, tell them they've updated
+                    window.localStorage.setItem("installed", "yes");
+                    window.Triton.editor.reload();
+                }, false);
+
+                // Initialize Triton
+                var editor = window.Triton.Editor(window);
+                editor.init();
+
+                cache.addEventListener('downloading', function(){
+                    editor.createAlert("Downloading a new update to Triton.");
+
+                    $("<div>", {
+                        "id" : "downloading",
+                        "css" : {
+                            "position" : "absolute",
+                            "top": "10%",
+                            "left": "40%"
+                        }
+                    }).appendTo("body");
+
+                }, false);
+
+                cache.addEventListener('progress', function(ev){
+                    $("#downloading").text("Currently at: " + ev.loaded + " of " + ev.total);
+                }, false);
+                
+            })();
+        </script>
+    </body>
+</html>
